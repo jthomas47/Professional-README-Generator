@@ -6,13 +6,20 @@ const fs = require('fs');
 const questions = ['What is the title of your project?', 'What would you like the description to be?', 'What is the table of contents?', 'what are the steps required to install your project?', 'Provide instructions and examples for use.', 'List your collaborators, if any.', 'what license would you like to use?'];
 
 const generateMarkdown = ({title, description, tableOfContents, installation, usage, credits, license}) =>
-      `#${title}
-      ##${description}
-      ##${tableOfContents}
-      ##${installation}
-      ##${usage}
-      ##${credits}
-      ##${license}`;
+        `${title}
+       ##description
+       ${description}
+       ##table of contents
+       ${tableOfContents}
+       ##istallation
+       ${installation}
+       ##usage
+       ${usage}
+       ##credits
+       ${credits}
+       ##license
+       ${license}
+       `;
 
 
 
@@ -56,12 +63,6 @@ const promptUser = () => {
     ]);
 };
 
-.then((answers) => {
-    const readMeContent = generateMarkdown(answers);
-    fs.writeFile('README.md', readMeContent, (err) =>
-    err ? console.log(err) : console.log('successfully created README.md')
-    );
-});
 
 
 
@@ -72,12 +73,19 @@ const promptUser = () => {
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    promptUser();
+ 
+    
  }
 
 // TODO: Create a function to initialize app
 function init() {
-    
+    promptUser()
+        .then((answers) => {
+        const readMeContent = generateMarkdown(answers);
+        fs.writeFile('README.md', readMeContent, (err) =>
+        err ? console.log(err) : console.log('successfully created README.md')
+        );
+    });
 }
 
 // Function call to initialize app
