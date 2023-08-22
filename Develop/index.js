@@ -1,66 +1,56 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
+
 
 // TODO: Create an array of questions for user input
-const questions = ['What is the title of your project?', 'What would you like the description to be?', 'What is the table of contents?', 'what are the steps required to install your project?', 'Provide instructions and examples for use.', 'List your collaborators, if any.', 'what license would you like to use?'];
+const questions = [
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What is the title of your project?',
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'What would you like the description to be?',
+    },
+    {
+        type: 'input',
+        name: 'tableOfContents',
+        message: 'What is the table of contents?',
+    },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'what are the steps required to install your project?',
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message:'Provide instructions and examples for use.',
+    },
+    {
+        type: 'input',
+        name: 'credits',
+        message: 'List your collaborators, if any.',
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'what license would you like to use?',
+        choices: ['Apache', 'Boost', 'BSD', 'CCO', 'none']
+    },
+]
 
-const generateMarkdown = ({title, description, tableOfContents, installation, usage, credits, license}) =>
-        `${title}
-       ##description
-       ${description}
-       ##table of contents
-       ${tableOfContents}
-       ##istallation
-       ${installation}
-       ##usage
-       ${usage}
-       ##credits
-       ${credits}
-       ##license
-       ${license}
-       `;
 
 
 
 const promptUser = () => {
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'title',
-            message: questions[0],
-        },
-        {
-            type: 'input',
-            name: 'description',
-            message: questions[1],
-        },
-        {
-            type: 'input',
-            name: 'tableOfContents',
-            message: questions[2],
-        },
-        {
-            type: 'input',
-            name: 'installation',
-            message: questions[3],
-        },
-        {
-            type: 'input',
-            name: 'usage',
-            message: questions[4],
-        },
-        {
-            type: 'input',
-            name: 'credits',
-            message: questions[5],
-        },
-        {
-            type: 'input',
-            name: 'license',
-            message: questions[6],
-        },
-    ]);
+    return inquirer.prompt(
+        questions
+    );
 };
 
 
@@ -73,7 +63,9 @@ const promptUser = () => {
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
- 
+    fs.writeFile(fileName, data, (err) =>
+    err ? console.log(err) : console.log('successfully created README.md')
+    );
     
  }
 
@@ -81,12 +73,13 @@ function writeToFile(fileName, data) {
 function init() {
     promptUser()
         .then((answers) => {
-        const readMeContent = generateMarkdown(answers);
-        fs.writeFile('README.md', readMeContent, (err) =>
-        err ? console.log(err) : console.log('successfully created README.md')
-        );
+        //const readMeContent = generateMarkdown(answers);
+        const readMeContent = generateMarkdown(answers); 
+       writeToFile('README.md', readMeContent);
     });
 }
 
 // Function call to initialize app
 init();
+
+
