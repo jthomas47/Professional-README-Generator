@@ -17,9 +17,10 @@ const questions = [
         message: 'What would you like the description to be?',
     },
     {
-        type: 'input',
+        type: 'checkbox',
         name: 'tableOfContents',
-        message: 'What is the table of contents?',
+        message: 'What would you like to include in the table of contents?',
+        choices: ['Title', 'Description', 'Installation', 'Usage', 'Credits', 'License']
     },
     {
         type: 'input',
@@ -40,7 +41,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'what license would you like to use?',
-        choices: ['Apache', 'Boost', 'BSD', 'CCO', 'none']
+        choices: ['Apache', 'Boost', 'BSD', 'CCO']
     },
 ]
 

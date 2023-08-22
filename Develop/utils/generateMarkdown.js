@@ -17,8 +17,14 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if (license !== 'none') {
-    return '[jump to license section](#license)'
+  if (license === 'Apache') {
+    return '(https://opensource.org/licenses/Apache-2.0)'
+  } else if (license === 'Boost') {
+    return '(https://www.boost.org/LICENSE_1_0.txt)'
+  } else if (license === 'BSD') {
+    return '(https://opensource.org/licenses/BSD-3-Clause)'
+  } else if (license === 'CCO') {
+    return '(https://opensource.org/licenses/BSD-3-Clause)'
   } else {
     return ''
   }
@@ -38,6 +44,22 @@ function renderLicenseSection(license) {
   } else if (license === 'none') {
     return ''
   }
+
+  // switch (license) {
+  //   case 'Boost': 
+  //     return 'This application is covered under Apache 2.0 license'
+    
+  // }
+}
+
+function renderTableOfContents(tableOfContents) {
+  let returnString = '';
+  tableOfContents.forEach(option => {
+    returnString += `[${option}](#${option})  
+    `
+  });
+  return returnString
+  
 }
 
 // TODO: Create a function to generate markdown for README
@@ -46,24 +68,23 @@ return `# ${title}
 
 ${renderLicenseBadge(license)}
 
-${renderLicenseLink(license)}
-## description
+## Description
 ${description}
 
-## table of contents
-${tableOfContents}
+## Table of contents
+${renderTableOfContents(tableOfContents)}
 
-## istallation
+## Istallation
 ${installation}
 
-## usage
+## Usage
 ${usage}
 
-## credits
+## Credits
 ${credits}
 
-## license
-${renderLicenseSection(license)}
+## License
+${renderLicenseSection(license)} ${renderLicenseLink(license)}
 
 `;
 }
