@@ -1,6 +1,6 @@
 # asdf 
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 ## Description
 asdf
@@ -15,7 +15,7 @@ asdf
     
 
 ## Istallation
-asdf
+asfd
 
 ## Usage
 asdf
@@ -24,5 +24,5 @@ asdf
 asdf
 
 ## License
-This application is covered under Apache 2.0 license (https://opensource.org/licenses/Apache-2.0)
+This application is covered under Creative commons license (http://creativecommons.org/publicdomain/zero/1.0/)
 

@@ -38,18 +38,19 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   switch (license) {
     case 'Apache':
-      return 'This application is covered under Apache 2.0 license'
+      return 'This application is covered under the Apache 2.0 license'
     case 'Boost':
-      return 'This application is covered under Boost software license'
+      return 'This application is covered under the Boost software license'
     case 'BSD':
-      return 'This application is covered under BSD 3-clause license'
+      return 'This application is covered under the BSD 3-clause license'
     case 'CCO':
-      return 'This application is covered under Creative commons license'
+      return 'This application is covered under the Creative commons license'
     case '':
       return ''
   }
 }
 
+//function that returns the table of contents section of the README
 function renderTableOfContents(tableOfContents) {
   let returnString = '';
   tableOfContents.forEach(option => {
@@ -69,7 +70,7 @@ ${renderLicenseBadge(license)}
 ## Description
 ${description}
 
-## Table of contents
+## Table Of Contents
 ${renderTableOfContents(tableOfContents)}
 
 ## Istallation

@@ -47,7 +47,7 @@ const questions = [
 
 
 
-
+//function that prompts the user with what to include in the README 
 const promptUser = () => {
     return inquirer.prompt(
         questions
