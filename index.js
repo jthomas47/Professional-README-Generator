@@ -20,7 +20,7 @@ const questions = [
         type: 'checkbox',
         name: 'tableOfContents',
         message: 'What would you like to include in the table of contents?',
-        choices: ['Title', 'Description', 'Installation', 'Usage', 'Credits', 'License']
+        choices: ['Description', 'Installation', 'Usage', 'Credits', 'License']
     },
     {
         type: 'input',

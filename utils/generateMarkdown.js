@@ -54,7 +54,7 @@ function renderLicenseSection(license) {
 function renderTableOfContents(tableOfContents) {
   let returnString = '';
   tableOfContents.forEach(option => {
-    returnString += `[${option}](#${option})  
+    returnString += `[${option}](#${option.toLowerCase()})  
     `
   });
   return returnString
